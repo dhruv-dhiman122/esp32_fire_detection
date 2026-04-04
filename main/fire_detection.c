@@ -26,6 +26,7 @@ void app_main(void)
     gpio_config(&MQ5_PIN_CONFIG);
 
     int mq5_pin_input_enable = gpio_input_enable(MQ5_SENSOR);
+    //setting the code for seeing if the gpio takes input or not
     if(mq5_pin_input_enable == 0) {
         printf("The input is enabled for the pin of MQ5 sensor\n");
     }
@@ -34,4 +35,15 @@ void app_main(void)
         exit(EXT_FAILURE);
     }
 
+    //taking input using gpio pin of MQ5
+    float Gas_level = gpio_get_level(MQ5_SENSOR); // getting input for the MQ5 SENSOR pin for digital I/O
+    if(Gas_level > 400 && Gas_level < 600) {
+        printf("Warning!!!\n");
+    }
+    else if(Gas_level > 670) {
+        //TODO -> add the buzzer warning
+    }
+    else {
+        printf("All fine!!\n");
+    }
 }
