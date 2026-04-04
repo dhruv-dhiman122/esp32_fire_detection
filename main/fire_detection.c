@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "driver/gpio.h"
+#include "driver/adc.h"
 
 //space for macro used for coding
 
