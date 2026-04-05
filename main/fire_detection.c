@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "driver/gpio.h"
 #include "driver/adc.h"
+#include "soc/adc_channel.h"
+#include "hal/adc_types.h"
 
 //space for macro used for coding
 
@@ -11,7 +13,7 @@
 // space for defining the pins
 
 #define MQ5_SENSOR GPIO_NUM_32
-
+#define MQ5_CHANNEL ADC1_CHANNEL_4
 // space for configing the pins
 
 gpio_config_t MQ5_PIN_CONFIG = {
@@ -32,7 +34,7 @@ void app_main(void)
         printf("The input is enabled for the pin of MQ5 sensor\n");
     }
     else {
-        fprintf("The input is not enabled for the pin of MQ5 sensor\n");
+        fprintf(stderr,"The input is not enabled for the pin of MQ5 sensor\n");
         exit(EXT_FAILURE);
     }
 
