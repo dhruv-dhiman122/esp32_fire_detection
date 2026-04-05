@@ -27,7 +27,7 @@ gpio_config_t MQ5_PIN_CONFIG = {
 
 void mq5_channel_init(void) {
     adc1_config_width(ADC_WIDTH_BIT_12);
-    adc1_config_channel_atten(MQ5_CHANNEL, ADC_ATTEN_DB_11);
+    adc1_config_channel_atten(MQ5_CHANNEL, ADC_ATTEN_DB_12);
 }
 
 void app_main(void)
@@ -47,7 +47,7 @@ void app_main(void)
     }
 
     //taking input using gpio pin of MQ5
-    float Gas_level = adc1_get_raw(MQ5_CHANNEL); // getting input for the MQ5 SENSOR pin for digital I/O
+    float Gas_level = adc1_get_raw(MQ5_CHANNEL); // getting input for the MQ5 SENSOR pin for analog I/O
     if(Gas_level > 400 && Gas_level < 600) {
         printf("Warning!!!\n");
     }
