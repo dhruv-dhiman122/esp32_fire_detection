@@ -47,7 +47,7 @@ void app_main(void)
     }
 
     //taking input using gpio pin of MQ5
-    float Gas_level = gpio_get_level(MQ5_SENSOR); // getting input for the MQ5 SENSOR pin for digital I/O
+    float Gas_level = adc1_get_raw(MQ5_CHANNEL); // getting input for the MQ5 SENSOR pin for digital I/O
     if(Gas_level > 400 && Gas_level < 600) {
         printf("Warning!!!\n");
     }
