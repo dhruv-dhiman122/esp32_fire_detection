@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "driver/adc_types_legacy.h"
 #include "driver/gpio.h"
 #include "driver/adc.h"
 #include "soc/adc_channel.h"
@@ -24,9 +25,16 @@ gpio_config_t MQ5_PIN_CONFIG = {
     .intr_type = GPIO_INTR_DISABLE
 };
 
+void mq5_channel_init(void) {
+    adc1_config_width(ADC_WIDTH_BIT_12);
+    adc1_config_channel_atten(MQ5_CHANNEL, ADC_ATTEN_DB_11);
+}
+
 void app_main(void)
 {
     gpio_config(&MQ5_PIN_CONFIG);
+
+    mq5_channel_init();
 
     int mq5_pin_input_enable = gpio_input_enable(MQ5_SENSOR);
     //setting the code for seeing if the gpio takes input or not
